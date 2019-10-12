@@ -67,6 +67,7 @@ ListofUserInformation
     log to console           ${x-pow}
     should be equal          ${x-pow}            Express
 
+    log many  
 *** Keywords ***
 
 
