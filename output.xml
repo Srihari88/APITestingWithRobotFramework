@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.7.2 on darwin)" generated="20191003 22:58:56.977" rpa="false">
+<suite id="s1" name="StudentGET" source="/Users/reenupanwar/PycharmProjects/APITestingWithRobotFramework/StudentGET.robot">
+<test id="s1-t1" name="Get Student details">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>Student</arg>
+<arg>${URL}</arg>
+</arguments>
+<msg timestamp="20191003 22:58:57.538" level="INFO">Creating Session using : alias=Student, url=http://thetestingworldapi.com/, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20191003 22:58:57.538" endtime="20191003 22:58:57.539"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>Student</arg>
+<arg>/api/studentsDetails</arg>
+</arguments>
+<assign>
+<var>${Response}</var>
+</assign>
+<msg timestamp="20191003 22:59:08.563" level="INFO">Get Request using : alias=Student, uri=/api/studentsDetails, headers=None json=None</msg>
+<msg timestamp="20191003 22:59:08.564" level="INFO">${Response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191003 22:58:57.539" endtime="20191003 22:59:08.564"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${Response.status_code}</arg>
+</arguments>
+<status status="PASS" starttime="20191003 22:59:08.564" endtime="20191003 22:59:08.564"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${Response.content}</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20191003 22:59:12.138" level="INFO">${body} = [{"id":1012,"first_name":"Sunil","middle_name":"Kumar","last_name":"Choudhary","date_of_birth":"14/05/1987"},{"id":1013,"first_name":"Smoke Testing","middle_name":"Smoke World","last_name":"SmokeTesti...</msg>
+<status status="PASS" starttime="20191003 22:59:08.564" endtime="20191003 22:59:12.138"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${Response.json()}</arg>
+</arguments>
+<assign>
+<var>${myjson}</var>
+</assign>
+<msg timestamp="20191003 22:59:12.856" level="INFO">${myjson} = [{'id': 1012, 'first_name': 'Sunil', 'middle_name': 'Kumar', 'last_name': 'Choudhary', 'date_of_birth': '14/05/1987'}, {'id': 1013, 'first_name': 'Smoke Testing', 'middle_name': 'Smoke World', 'last_n...</msg>
+<status status="PASS" starttime="20191003 22:59:12.139" endtime="20191003 22:59:12.856"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${myjson['id']}</arg>
+<arg>convert to string</arg>
+<arg>1020</arg>
+</arguments>
+<msg timestamp="20191003 22:59:12.856" level="FAIL">Resolving variable '${myjson['id']}' failed: TypeError: string indices must be integers</msg>
+<status status="FAIL" starttime="20191003 22:59:12.856" endtime="20191003 22:59:12.856"></status>
+</kw>
+<status status="FAIL" starttime="20191003 22:58:57.537" endtime="20191003 22:59:12.857" critical="yes">Resolving variable '${myjson['id']}' failed: TypeError: string indices must be integers</status>
+</test>
+<doc>Suite description</doc>
+<status status="FAIL" starttime="20191003 22:58:56.979" endtime="20191003 22:59:12.857"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1">Critical Tests</stat>
+<stat pass="0" fail="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" id="s1" name="StudentGET">StudentGET</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
