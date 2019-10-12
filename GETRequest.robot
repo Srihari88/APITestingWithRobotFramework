@@ -69,6 +69,7 @@ ListofUserInformation
 
     log many  
     log to console
+    log to console   Ramji
 *** Keywords ***
 
 
