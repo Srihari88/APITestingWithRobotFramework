@@ -71,6 +71,12 @@ ListofUserInformation
     log to console
     log to console      Srihari Tesing
     log to console      Must Read
+
+MyRequest Method
+    create session      UserList       ${baseUrl}
+    ${response}=    get request         UserList       /api/unknown
+    ${GetList}=              convert to string       ${response.status_code}
+    log to console           ${GetList}
 *** Keywords ***
 
 
